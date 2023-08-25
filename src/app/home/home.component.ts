@@ -173,6 +173,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         if (x < 79 && this.state[x + 1][y] == 1) neighbourcount++;
         if (x > 0 && y > 0 && this.state[x - 1][y - 1] == 1) neighbourcount++;
         if (y > 0 && this.state[x][y - 1] == 1) neighbourcount++;
+        if (x < 79 && y > 0 && this.state[x + 1][y - 1] == 1) neighbourcount++;
 
         if (neighbourcount < 2) tempstate[x][y] = 0;
         if (neighbourcount > 3) tempstate[x][y] = 0;
