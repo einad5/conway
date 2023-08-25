@@ -39,7 +39,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   canvas!: ElementRef<HTMLCanvasElement>;
 
   private ctx!: CanvasRenderingContext2D;
-  public state!: number[][];
+  public state!: any[];
 
   @ViewChild('start') start!: ElementRef<HTMLButtonElement>;
   @ViewChild('stop') stop!: ElementRef<HTMLButtonElement>;
@@ -65,7 +65,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   reset() {
-    this.state = [];
+    this.state = [] as any[];
     for (var i = 0; i < 80; i++) {
       this.state[i] = new Array(80).fill(0);
     }
@@ -156,7 +156,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     return 80;
   }
   drawRect() {
-    let tempstate = [];
+    let tempstate: any[] = [];
 
     for (var i = 0; i < 80; i++) {
       tempstate[i] = new Array(80).fill(0);
@@ -176,7 +176,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
         if (neighbourcount < 2) tempstate[x][y] = 0;
         if (neighbourcount > 3) tempstate[x][y] = 0;
-        if (neighbourcount == 2 || neighbourcount == 3) tempstate[x][y] = this.state[x][y];
+        if (neighbourcount == 2 || neighbourcount == 3) {
+          const tmp = this.state[x][y];
+          tempstate[x][y] = tmp;
+        }
         if (neighbourcount == 3) tempstate[x][y] = 1;
       }
     }
