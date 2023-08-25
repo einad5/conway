@@ -9,7 +9,7 @@ import { Observable, Subscription, timer } from 'rxjs';
 export class HomeComponent implements AfterViewInit, OnInit {
 
       subscription!: Subscription;
-    everyFiveSeconds: Observable<number> = timer(0, 500);
+    everyFiveSeconds: Observable<number> = timer(0, 1);
   constructor() {
 
   }
@@ -25,8 +25,8 @@ this.subscription = this.everyFiveSeconds.subscribe(() => {
 
   ngAfterViewInit(): void {
           this.ctx = this.canvas.nativeElement.getContext('2d')!;
-    this.canvas.nativeElement.width = 800;
-    this.canvas.nativeElement.height = 800;
+    this.canvas.nativeElement.width = 1000;
+    this.canvas.nativeElement.height = 1000;
     console.log("pop")
     this.drawRect();
 
@@ -35,8 +35,8 @@ this.subscription = this.everyFiveSeconds.subscribe(() => {
   drawRect() {
     const c = this.ctx;
     c.beginPath();
-    const randx = Math.floor(Math.random() * 11) * 10
-    const randy = Math.floor(Math.random() * 11) * 10
+    const randx = Math.floor(Math.random() * 81) * 10
+    const randy = Math.floor(Math.random() * 81) * 10
 
     c.rect(randx, randy, 10, 10);
     c.fillStyle = 'black';
