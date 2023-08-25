@@ -59,7 +59,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     for (var i = 0; i < 80; i++) {
       this.state[i] = new Array(80).fill(0);
     }
-    debugger;
+    this.state[19][20] = 1;
     this.state[20][20] = 1;
     this.state[21][20] = 1;
     this.state[20][21] = 1;
@@ -123,7 +123,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         if (y < 79 && x < 79 && this.state[x + 1][y + 1] == 1) neighbourcount++;
         if (neighbourcount < 2) tempstate[x][y] = 0;
         if (neighbourcount > 3) tempstate[x][y] = 0;
-        if (neighbourcount == 2 || neighbourcount == 3) tempstate[x][y] = 0;
+        if (neighbourcount == 2 || neighbourcount == 3) tempstate[x][y] = 1;
         if (neighbourcount == 3) tempstate[x][y] = 1;
       }
     }
@@ -140,5 +140,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
         c.fill();
       }
     }
+    this.state = tempstate;
   }
 }
