@@ -56,13 +56,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
           this.ctx = this.canvas.nativeElement.getContext('2d')!;
-    this.canvas.nativeElement.width = 1000;
-    this.canvas.nativeElement.height = 1000;
+    this.canvas.nativeElement.width = 800;
+    this.canvas.nativeElement.height = 800;
 
   this.startClick$ = fromEvent(this.start.nativeElement, 'click');
     this.stopClick$ = fromEvent(this.stop.nativeElement, 'click').pipe(tap(() => {
 
-      this.ctx.clearRect(0, 0, 1000, 1000);
+      this.ctx.clearRect(0, 0, 800, 800);
     }));
     this.pauseBtn$ = fromEvent(this.pause.nativeElement, 'click');
 
